@@ -35,5 +35,5 @@ jobs:
         run: |
           ls -l ./download_artifacts
           echo "Testing download artifact..."
-          cat ./download_artifacts/dummy_artifact
+          cat ./download_artifacts/output.txt
       
