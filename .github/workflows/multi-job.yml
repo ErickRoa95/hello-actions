@@ -55,7 +55,7 @@ jobs:
 
   cross-compile:
     runs-on: ubuntu-latest
-    needs: [ubuntu, windows, macos]
+    needs: [build-ubuntu, build-windows, build-macos]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
