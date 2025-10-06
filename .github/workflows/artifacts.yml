@@ -18,7 +18,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: dummy-artifact.txt
+          name: dummy-artifact
           path: output.txt
 
   test:
@@ -29,10 +29,11 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v4
         with: 
-          name: dummy-artifact.txt
-          path: output.txt
-      - name: Test Artifact
+          name: dummy-artifact
+          path: ./download_artifacts
+      - name: Access Download Artifact
         run: |
+          ls -l ./download_artifacts
           echo "Testing download artifact..."
-          cat output.txt
+          cat ./download_artifacts/dummy_artifact
       
