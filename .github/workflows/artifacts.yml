@@ -31,7 +31,7 @@ jobs:
         with: 
           name: dummy-artifact.txt
       - name: Make readable
-        run: chmod +x dummy_artifact.txt
+        run: chmod +x dummy-artifact.txt
       - name: Test Artifact
         run: |
           echo "Testing download artifact..."
