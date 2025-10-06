@@ -21,3 +21,42 @@ jobs:
       run: |
         go version
         go test -v ./...
+
+  build:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.23'
+
+      - name: Build Binary
+        run: |
+          go build cmd/cmd_pipeline/main.go
+          ls -l
+
+      - name: Upload Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: binary_file
+          path: main
+
+  test-build:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download Binary
+        uses: actions/download-artifact@v4
+        with:
+          name: binary_file
+          path: main
+      - name: Make Binary Executable 
+        run: chmod +x ./main
+      - name: Run Binary
+        run: ./main
