@@ -33,5 +33,5 @@ jobs:
       - name: Test Artifact
         run: |
           echo "Testing download artifact..."
-          cat dummy-artifact.txt
+          cat ./dummy-artifact.txt
       
